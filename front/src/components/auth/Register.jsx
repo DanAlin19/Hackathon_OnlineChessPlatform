@@ -1,6 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Register() {
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const response = await fetch('http://localhost:8080/api/v1/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ firstName, lastName, email, password }),
+        });
+  
+        if (response.ok) {
+          // Successful login, redirect to dashboard or homepage
+          window.location.href = '/';
+        } else {
+          // Login failed, display error message
+          const errorData = await response.json();
+          setErrorMessage(errorData.message);
+        }
+      } catch (error) {
+        console.error('Login failed:', error);
+        setErrorMessage('An error occurred while logging in. Please try again later.');
+      }
+    };
     return (
         <div className='h-screen w-screen dark:bg-slate-800 duration-100 bg-white'>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden z-0 max-[600px]:px-3">
@@ -8,46 +40,42 @@ export default function Register() {
                     <h1 className="text-3xl font-semibold text-center text-sky-700 uppercase dark:text-white">
                         Sign up
                     </h1>
-                    <form className="mt-6">
+                    <form className="mt-6" onSubmit={handleSubmit}>
                         <div className="mb-2">
                             <label
-                                for="email"
                                 className="block text-sm font-semibold text-gray-800 dark:text-white"
                             >
                                 First Name
                             </label>
                             <input
-                                type="email"
                                 className="block w-full px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                value={firstName} onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
                         <div className="mb-2">
                             <label
-                                for="email"
                                 className="block text-sm font-semibold text-gray-800 dark:text-white"
                             >
                                 Last Name
                             </label>
                             <input
-                                type="email"
                                 className="block w-full px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                value={lastName} onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
                         <div className="mb-2">
                             <label
-                                for="email"
                                 className="block text-sm font-semibold text-gray-800 dark:text-white"
                             >
                                 Email
                             </label>
                             <input
-                                type="email"
                                 className="block w-full px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                value={email} onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-2">
                             <label
-                                for="password"
                                 className="block text-sm font-semibold text-gray-800 dark:text-white"
                             >
                                 Password
@@ -55,6 +83,7 @@ export default function Register() {
                             <input
                                 type="password"
                                 className="block w-full px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                value={password} onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <a
