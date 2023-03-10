@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities{
+    .animation-delay-2000{
+        animation-delay: 2s;
+    }
+    .animation-delay-4000{
+        animation-delay: 4s;
+    }
+    .animation-delay-6000{
+        animation-delay: 6s;
+    }
+}
+
+.gradient__blue {
+    animation: pulse 12s 10s ease infinite;
+  }
+  
+  .gradient__blue2 {
+    animation: pulse 8s 10s ease infinite;
+  }
+  
+  .gradient__pink {
+    animation: pulse 20s ease infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 0.2;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
