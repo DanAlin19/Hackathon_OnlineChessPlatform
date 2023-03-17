@@ -3,7 +3,7 @@ import React from 'react';
 export default function Home() {
     return (
 
-        <div className='h-screen w-screen dark:bg-slate-800 duration-100 bg-white items-center justify-center'>
+        <div className='h-screen w-full dark:bg-slate-800 duration-100 bg-white items-center justify-center'>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden max-[1021px]:px-5">
                 <div className="">
                     <div className='absolute z-0 top-48 left-28 w-60 h-60 bg-cyan-300 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob'></div>

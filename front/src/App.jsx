@@ -3,7 +3,6 @@ import React from "react";
 import Login from "./components/auth/Login"
 import Register from "./components/auth/Register"
 import Home from "./components/home/Home"
-import DarkTheme from "./components/dark_theme/DarkTheme"
 import Navbar from "./components/navbar/Navbar"
 
 function App() {
@@ -14,9 +13,9 @@ function App() {
         <BrowserRouter>
         
           <Routes>
-          <Route path="/" element={<div><Navbar/><Home/><DarkTheme/></div>} />
-          <Route path="/login" element={<div> <Login /><DarkTheme/></div>} />
-          <Route path="/register" element={<div> <Register /><DarkTheme/></div>} />
+          <Route path="/" element={<div><Navbar/><Home/></div>} />
+          <Route path="/login" element={<div> <Navbar/><Login /></div>} />
+          <Route path="/register" element={<div> <Navbar/><Register /></div>} />
           </Routes>
       
         </BrowserRouter>

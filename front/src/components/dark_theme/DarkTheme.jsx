@@ -61,7 +61,7 @@ function DarkTheme() {
     })
 
     return (
-        <div className='fixed top-5 right-10 duration-100 dark:bg-slate-800 bg-white rounded z-100'>
+        <div className=' top-5 right-10 duration-100 dark:bg-slate-800 bg-white rounded z-100'>
             {
                 options?.map(opt => (
                     <button key={opt.text}
