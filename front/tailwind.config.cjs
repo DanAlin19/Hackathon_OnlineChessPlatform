@@ -26,25 +26,21 @@ module.exports = {
     },
     extend: {
       animation:{
-        blob: "blob 10s infinite"
+        blob: "blob 15s infinite"
       },
       keyframes:{
         blob: {
           "0%": {
-            transform: "translate(0px, 0px) scale(.7)",
-            opacity: .6,
+            transform: "scale(1)",
+            opacity: 0.5
           },
-          "33%": {
-            transform: "translate(50px, -100px) scale(1)",
-            opacity: .1,
-          },
-          "66%": {
-            transform: "translate(-40px, 20px) scale(0.5)",
-            opacity: .4,
+          "50%": {
+            transform: "scale(0.5)",
+            opacity: 0
           },
           "100%": {
-            transform: "translate(0px, 0px) scale(.7)",
-            opacity: .6,
+            transform: "scale(1)",
+            opacity: 0.5
           },
         }
       }

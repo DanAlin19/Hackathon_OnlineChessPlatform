@@ -5,22 +5,22 @@ export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
 
     return (
-        <nav className="w-full dark:bg-slate-800 shadow">
-            <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <nav className="w-full bg-white dark:bg-slate-800 shadow z-50 bg-opacity-25">
+            <div className="justify-between px-4 mx-auto lg:max-w-7xl lg:items-center lg:flex lg:px-8">
                 <div>
-                    <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                    <div className="flex items-center justify-between py-3 lg:py-5 lg:block">
                         <a href="/">
-                            <h2 className="text-2xl font-bold text-white">LOGO</h2>
+                            <h2 className="text-2xl font-bold text-sky-700 dark:text-white">LOGO</h2>
                         </a>
-                        <div className="md:hidden">
+                        <div className="lg:hidden">
                             <button
-                                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                                className="p-2 text-gray-700 rounded-lg outline-non"
                                 onClick={() => setNavbar(!navbar)}
                             >
                                 {navbar ? (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-white"
+                                        className="w-6 h-6 text-slate-700 dark:text-white"
                                         viewBox="0 0 20 20"
                                         fill="currentColor"
                                     >
@@ -33,7 +33,7 @@ export default function NavBar() {
                                 ) : (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-white"
+                                        className="w-6 h-6 text-slate-700 dark:text-white"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -52,56 +52,60 @@ export default function NavBar() {
                 </div>
                 <div>
                     <div
-                        className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-                            navbar ? "block" : "hidden"
-                        }`}
+                        className={`flex-1 justify-self-center pb-3 mt-8 lg:block lg:pb-0 lg:mt-0 ${navbar ? "block" : "hidden"
+                            }`}
                     >
-                        <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                            <li className="text-white hover:text-indigo-200">
-                                <a href="javascript:void(0)">Home</a>
+                        <ul className="items-center justify-center space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
+                            <li className="hover:text-indigo-200 dark:text-white text-slate-700">
+                                <a href="/">Home</a>
                             </li>
-                            <li className="text-white hover:text-indigo-200">
-                                <a href="javascript:void(0)">Blog</a>
+                            <li className="dark:text-white text-slate-700 hover:text-indigo-200">
+                                <a href="/">Blog</a>
                             </li>
-                            <li className="text-white hover:text-indigo-200">
-                                <a href="javascript:void(0)">About US</a>
+                            <li className="dark:text-white text-slate-700 hover:text-indigo-200">
+                                <a href="/">About US</a>
                             </li>
-                            <li className="text-white hover:text-indigo-200">
-                                <a href="javascript:void(0)">Contact US</a>
+                            <li className="dark:text-white text-slate-700 hover:text-indigo-200">
+                                <a href="/">Contact US</a>
                             </li>
+                            {navbar ? <li>
+                                <DarkTheme />
+                            </li> : null}
                         </ul>
 
-                        <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-                    <a
-                        href="/login"
-                        className="inline-block w-full px-4 py-2 text-center text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
-                    >
-                        Sign in
-                    </a>
-                    <a
-                        href="/register"
-                        className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                    >
-                        Sign up
-                    </a>
-                </div>
+                        <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
+                            <a
+                                href="/login"
+                                className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                            >
+                                Sign in
+                            </a>
+                            <a
+                                href="/register"
+                                className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
+                            >
+                                Sign up
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div className="hidden space-x-2 md:inline-block">
+                <div className="hidden space-x-2 lg:inline-block">
                     <a
                         href="/login"
-                        className="px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                        className="px-4 py-2 text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
                     >
                         Sign in
                     </a>
                     <a
                         href="/register"
-                        className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                        className="px-4 py-2 text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
                     >
                         Sign up
                     </a>
                 </div>
-                <DarkTheme/>
+                <div className="hidden lg:flex">
+                    <DarkTheme/>
+                </div>
             </div>
         </nav>
     );
