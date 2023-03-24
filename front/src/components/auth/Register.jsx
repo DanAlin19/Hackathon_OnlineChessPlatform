@@ -35,7 +35,7 @@ export default function Register() {
     };
     return (
         <div className='h-screen w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 duration-100'>
-            <div className="relative flex flex-col justify-center min-h-screen overflow-hidden z-0 max-[600px]:px-3">
+            <div className="relative flex flex-col justify-center min-h-screen overflow-hidden z-0 max-[1024px]:px-28 max-[600px]:px-6">
                 <div className="">
                     <div className='absolute z-0 top-48 left-28 w-60 h-60 opacity-50 bg-blue-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob'></div>
                     <div className='absolute z-0 top-0 right-28 w-60 h-60 opacity-50 bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-2000'></div>
