@@ -1,72 +1,84 @@
-import React from 'react';
+import { React, useEffect, useState, useRef } from 'react';
+import { extend, Canvas, useLoader, useThree, useFrame } from "@react-three/fiber";
+import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
+import * as THREE from 'three';
+import { MeshBasicMaterial } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { Color } from 'three';
+
+extend({ MeshBasicMaterial });
+
+function Model(props) {
+    const modelRef = useRef();
+    const { scene } = useGLTF("/network.glb");
+    // let customcol = 0x4800FF;
+    // if (localStorage.getItem("theme") === "dark")
+    //     customcol = 0x00AFFF;
+    const [color, setColor] = useState(0x006FFF);
+    const newMaterial = new THREE.MeshStandardMaterial({ color: color });
+    useEffect(() => {
+        scene.traverse((node) => {
+            if (node instanceof THREE.Mesh) {
+                node.material = newMaterial;
+            }
+        });
+    }, [color]);
+
+      return (
+        <group ref={modelRef}>
+            <primitive object={scene} />
+        </group>
+    );
+
+    // const {nodes} = useLoader(GLTFLoader, '/planet.glb');
+}
+
+// const Glow = ({ color, intensity, ...props }) => {
+//   const { gl, scene, camera, size } = useThree();
+//   const composer = useRef();
+//   useEffect(() => void composer.current.setSize(size.width, size.height), [size]);
+//   useFrame(({ gl, scene, camera }) => {
+//     gl.autoClear = false;
+//     gl.render(scene, camera);
+//     composer.current.render();
+//   }, 1);
+//   return (
+//     <>
+//       <EffectComposer ref={composer} args={[gl]}>
+//         <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} height={100} intensity={intensity} />
+//         <Noise opacity={0.01} />
+//       </EffectComposer>
+//       <spotLight color={color} intensity={intensity} position={[0, 0, 500]} />
+//     </>
+//   );
+// };
 
 export default function Home() {
     return (
 
-        <div className='h-screen w-full dark:bg-slate-800 duration-100 bg-white items-center justify-center'>
-            <div className="relative flex flex-col justify-center min-h-screen overflow-hidden max-[1021px]:px-5">
+        <div className='h-screen w-full duration-100 items-center justify-center bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 '>
+            <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 px-8 py-8 lg:py-48">
+
+                <div className="md:flex md:flex-col md:justify-center">
+                    <h2 className="text-black text-2xl md:text-4xl lg:text-6xl font-bold mb-4 text-center dark:text-white">
+                        Whoa Responsive!
+                    </h2>
+
+                    <p className="md:text-lg text-gray-900 text-center dark:text-white">Responsive can be done using Tailwind!</p>
+                </div>
                 <div className="">
-                    <div className='absolute z-0 top-48 left-28 w-60 h-60 opacity-50 bg-cyan-300 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob'></div>
-                    <div className='absolute z-0 top-0 right-28 w-60 h-60 opacity-50 bg-indigo-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000'></div>
-                    <div className='absolute z-0 -bottom-24 left-24 w-60 h-60 opacity-50 bg-sky-400 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-2000' ></div>
-                    <div className='absolute z-0 bottom-48 right-48 w-60 h-60 opacity-50 bg-blue-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-6000' ></div>
+                    <div className="w-full h-80">
+                        <Canvas dpr={[1, 2]} style={{ position: 'relative', touchAction: 'none' }} camera={{ fov: 35, zoom: 1.5 }}>
+                            <PresentationControls speed={1.5} global zoom={1} polar={[-0.1, Math.PI / 4]}>
+                                <Stage environment={null}>
+                                    <Model></Model>
+                                    {/* <Glow color={new THREE.Color('#f6ff00')} intensity={1} /> */}
+                                </Stage>
+                            </PresentationControls>
+                        </Canvas>
+                    </div>
                 </div>
 
-                <div className="w-full p-6 m-auto bg-white dark:bg-slate-700 rounded-md shadow-xl shadow-sky-400/30 ring ring-2 ring-sky-600 lg:max-w-xl z-40">
-
-                    <h1 className="text-3xl font-semibold text-center text-sky-700 uppercase dark:text-white z-40">
-                        Sign in
-                    </h1>
-                    <form className="mt-6 z-40">
-                        <div className="mb-2 z-40">
-                            <label
-                                for="email"
-                                className="block z-40 text-sm font-semibold text-gray-800 dark:text-white"
-                            >
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                className="block w-full z-40 px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            />
-                        </div>
-                        <div className="mb-2">
-                            <label
-                                for="password"
-                                className="block text-sm font-semibold text-gray-800 dark:text-white z-40"
-                            >
-                                Password
-                            </label>
-                            <input
-                                type="password"
-                                className="block w-full z-40 px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            />
-                        </div>
-                        <a
-                            href="#"
-                            className="text-xs text-sky-600 dark:text-sky-400 hover:underline"
-                        >
-                            Forgot Password?
-                        </a>
-                        <div className="mt-6 z-40">
-                            <button className="w-full z-40 px-4 py-2 tracking-wide  text-white transition-colors duration-200 transform bg-sky-700 dark:bg-sky-500 rounded-md hover:bg-sky-600 focus:outline-none focus:bg-sky-600">
-                                Login
-                            </button>
-                        </div>
-                    </form>
-
-                    <p className="mt-8 text-xs font-light text-center text-gray-700 dark:text-white z-40">
-                        {" "}
-                        Don't have an account?{" "}
-                        <a
-                            href="#"
-                            className="font-medium text-sky-600 dark:text-sky-400 hover:underline z-40"
-                        >
-                            Sign up
-                        </a>
-                    </p>
-
-                </div>
             </div>
         </div>
 

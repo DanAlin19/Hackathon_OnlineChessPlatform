@@ -33,13 +33,13 @@ export default function Login() {
     };
 
     return (
-        <div className='h-screen w-screen dark:bg-slate-800 duration-100 bg-white'>
+        <div className='h-screen w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 duration-100 '>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden z-0 max-[600px]:px-3">
                 <div className="">
-                    <div className='absolute z-0 top-48 left-28 w-60 h-60 bg-cyan-300 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob'></div>
-                    <div className='absolute z-0 top-0 right-28 w-60 h-60 bg-indigo-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-2000'></div>
-                    <div className='absolute z-0 -bottom-24 left-24 w-60 h-60 bg-sky-400 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000' ></div>
-                    <div className='absolute z-0 bottom-48 right-48 w-60 h-60 bg-blue-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000' ></div>
+                    <div className='absolute z-0 top-48 left-28 w-60 h-60 opacity-50 bg-blue-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob'></div>
+                    <div className='absolute z-0 top-0 right-28 w-60 h-60 opacity-50 bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-2000'></div>
+                    <div className='absolute z-0 -bottom-24 left-24 w-60 h-60 opacity-50 bg-blue-700 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000' ></div>
+                    <div className='absolute z-0 bottom-48 right-48 w-60 h-60 opacity-50 bg-blue-800 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000' ></div>
                 </div>
                 <div className="w-full p-6 m-auto bg-white dark:bg-slate-700 rounded-md shadow-xl shadow-sky-400/30 ring ring-2 ring-sky-600 lg:max-w-xl">
                     <h1 className="text-3xl font-semibold text-center text-sky-700 uppercase dark:text-white">
