@@ -5,7 +5,7 @@ const fs = require("fs")
 const dotenv = require('dotenv')
 dotenv.config()
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 
 const server =
   process.env.ENV === "dev"
