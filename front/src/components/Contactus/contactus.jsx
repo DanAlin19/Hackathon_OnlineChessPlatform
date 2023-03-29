@@ -47,7 +47,7 @@ const StyledRating = styled(Rating)(({ theme }) => ({
   };
 
 const Contactus = () => {
-  const [name, setName] = useState("");
+  const [fullname, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(2);
@@ -58,29 +58,30 @@ const Contactus = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Name: ", name);
+    console.log("Name: ", fullname);
     console.log("Email: ", email);
     console.log("Message: ", message);
     console.log("Rating: ", rating);
+    console.log(JSON.stringify({ fullname, email, message, rating }));
 
-    fetch('/api/ratings', {
+    fetch('http://localhost:5000/api/v1/contact/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ rating }),
+      body: JSON.stringify({ fullname, email, message, rating }),
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        // if (!response.ok) {
+        //   throw new Error('Network response was not ok');
+        // }
         return response.json();
       })
       .then((data) => {
-        console.log('Rating sent successfully:', data);
+        console.log(data);
       })
       .catch((error) => {
-        console.error('Error sending rating:', error);
+        console.error(error);
       });
     /** 
      *! De aici se trimit datele la server
@@ -109,7 +110,7 @@ const Contactus = () => {
             id="name"
             type="text"
             placeholder="Full name"
-            value={name}
+            value={fullname}
             onChange={(event) => setName(event.target.value)}
             required
           />
