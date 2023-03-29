@@ -18,6 +18,10 @@ async function sendContactUs(req, res, next) {
     try {
         const { fullname, email, message, rating} = req.body;
 
+        if (!fullname || !email || !message) {
+            return res.status(400).send('Please fill out all required fields');
+        }
+
         const newContact = new ContactUS({ fullname, email, message, rating })
         await newContact.save();
 
@@ -29,12 +33,10 @@ async function sendContactUs(req, res, next) {
             const message_to = message;
         
             await sendEmail(subject, message_to, send_to, sent_from, reply_to);
-            res.status(200).json({ success: true, message: "Email Sent" });
+            res.send("Email sent!");
           } catch (error) {
-            res.status(500).json(error.message);
-          }
-        
-
+            next(e);
+        }
     } catch (e) {
         next(e);
     }

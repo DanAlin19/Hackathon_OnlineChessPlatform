@@ -33,7 +33,6 @@ async function loginUser(req, res, next) {
         }
 
         const payload = { id: user._id, email: user.email };
-        // console.log(process.env.JWT_SECRET);
         const token = jwt.sign(payload, process.env.JWT_SECRET);
 
         res.send({ token })
