@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
    frontend:
      restart: always
@@ -7,13 +8,17 @@ services:
      volumes:
       - ./front:/usr/src/app
       - /usr/src/app/node_modules
-     tty: true
+     command: npm run dev
      ports:
        - 3000:3000
      environment:
-       - CHOKIDAR_USEPOLLING=true
+       CHOKIDAR_USEPOLLING: ${CHOKIDAR_USEPOLLING}
    database:
     image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     ports:
       - 27017:27017
     volumes:
@@ -22,16 +27,20 @@ services:
     restart: always
     image: back:latest
     build: ./back
+    env_file: ./.env
+    links: 
+      - "database:db"
     volumes:
       - ./back:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - 5000:5000
-    tty: true
+    command: npm start
     environment:
-      NODE_ENV: development
+      NODE_ENV: ${NODE_ENV}
     depends_on: 
       - database
 
 volumes:
   mongodb_data_container:
+
