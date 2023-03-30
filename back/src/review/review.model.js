@@ -4,9 +4,7 @@ const model = mongoose.model;
 
 const ReviewSchema = new Schema({
 
-    lastName: { type: String, require: true},
-    firstName: { type: String, require: true},
-    email: { type: String, require: true },
+    user: { type: Schema.Types.ObjectId, required: true, ref: "users"},
     message: { type: String, require: true},
     rating: { type: Number, require: true}
 });
