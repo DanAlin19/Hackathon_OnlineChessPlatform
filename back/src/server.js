@@ -2,8 +2,11 @@ const app = require("./app")
 const https = require("https")
 const http = require("http")
 const fs = require("fs")
+const socketio = require('socket.io')
+const gameLogic = require('./gamelogic')
 const dotenv = require('dotenv')
 dotenv.config()
+
 
 const port = process.env.PORT || 5000;
 
@@ -17,6 +20,18 @@ const server =
         },
         app
       );
+
+// const io = socketio(server)
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+});
+io.on('connection', client => {
+  console.log('a user connected');
+  gameLogic.initializeGame(io, client)
+})
 
 function requireHTTPS(req, res, next) {
   if (!req.secure) {
