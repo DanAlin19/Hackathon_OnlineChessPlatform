@@ -1,17 +1,24 @@
 import { useState } from "react";
 import DarkTheme from "../dark_theme/DarkTheme";
+import LOGO from "../../assets/logo.png"
 
 export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
+    const [authenticated, setAuthenticated] = useState(false);
+
+    const handleSignOut = () => {
+        setAuthenticated(false);
+    };
+
 
     return (
         <nav className="w-full bg-gradient-to-r from-blue-100 to-blue-300 dark:bg-gradient-to-r dark:from-slate-600 dark:to-gray-900 duration-100 shadow z-50 bg-opacity-60">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl lg:items-center lg:flex lg:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 lg:py-5 lg:block">
-                        <a href="/">
-                            <h2 className="text-2xl font-bold text-sky-700 dark:text-white">LOGO</h2>
-                        </a>
+                    <a href="/">
+                        <img src={LOGO} alt={LOGO} className="h-8" />
+                    </a>
                         <div className="lg:hidden">
                             <button
                                 className="p-2 text-gray-700 rounded-lg outline-non"
@@ -73,20 +80,29 @@ export default function NavBar() {
                             </li> : null}
                         </ul>
 
-                        <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
-                            <a
-                                href="/login"
-                                className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                        {authenticated ? (
+                            <button
+                                className="px-4 py-2 text-white bg-red-500 rounded-lg shadow hover:bg-red-600"
+                                onClick={handleSignOut}
                             >
-                                Sign in
-                            </a>
-                            <a
-                                href="/register"
-                                className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
-                            >
-                                Sign up
-                            </a>
-                        </div>
+                                Sign Out
+                            </button>
+                        ) : (
+                            <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
+                                <a
+                                    href="/login"
+                                    className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                                >
+                                    Sign in
+                                </a>
+                                <a
+                                    href="/register"
+                                    className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
+                                >
+                                    Sign up
+                                </a>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="hidden space-x-2 lg:inline-block">
