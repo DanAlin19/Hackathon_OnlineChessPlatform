@@ -56,7 +56,7 @@ function Model(props) {
 export default function Home() {
     return (
 
-        <div className='h-screen w-full duration-100 items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300 dark:bg-gradient-to-r dark:from-slate-600 dark:to-gray-900 '>
+        <div className='h-screen w-full duration-100 items-center justify-center bg-gradient-to-r from-orange-200 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 '>
             <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 px-8 py-8 lg:py-48">
 
                 <div className="md:flex md:flex-col md:justify-center">
@@ -81,6 +81,5 @@ export default function Home() {
 
             </div>
         </div>
-
     );
 }

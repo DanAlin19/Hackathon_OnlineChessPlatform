@@ -66,7 +66,7 @@ function DarkTheme() {
                 options?.map(opt => (
                     <button key={opt.text}
                         onClick={() => setTheme(opt.text)}
-                        className={`w-8 h-8 leading-9 text-xl rounded-full m-1 ${theme === opt.text && "text-sky-600"}`}>
+                        className={`w-8 h-8 leading-9 text-xl rounded-full m-1 ${theme === opt.text && "text-black"}`}>
                         <ion-icon name={opt.icon}></ion-icon>
                     </button>))
             }

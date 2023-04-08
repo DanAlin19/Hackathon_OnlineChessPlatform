@@ -5,7 +5,7 @@ export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
 
     return (
-        <nav className="w-full bg-gradient-to-r from-blue-100 to-blue-300 dark:bg-gradient-to-r dark:from-slate-600 dark:to-gray-900 duration-100 shadow z-50 bg-opacity-60">
+        <nav className="w-full bg-gradient-to-r from-orange-200 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-100 shadow z-50 bg-opacity-60">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl lg:items-center lg:flex lg:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 lg:py-5 lg:block">
@@ -56,16 +56,16 @@ export default function NavBar() {
                             }`}
                     >
                         <ul className="items-center justify-center space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
-                            <li className="hover:text-indigo-200 dark:text-white text-slate-700">
+                            <li className="hover:text-black dark:text-white text-slate-700">
                                 <a href="/">Home</a>
                             </li>
-                            <li className="dark:text-white text-slate-700 hover:text-indigo-200">
+                            <li className="hover:text-black dark:text-white text-slate-700">
                                 <a href="/">Blog</a>
                             </li>
-                            <li className="dark:text-white text-slate-700 hover:text-indigo-200">
+                            <li className="hover:text-black dark:text-white text-slate-700">
                                 <a href="/">About US</a>
                             </li>
-                            <li className="dark:text-white text-slate-700 hover:text-indigo-200">
+                            <li className="hover:text-black dark:text-white text-slate-700">
                                 <a href="/">Contact US</a>
                             </li>
                             {navbar ? <li>
@@ -92,13 +92,13 @@ export default function NavBar() {
                 <div className="hidden space-x-2 lg:inline-block">
                     <a
                         href="/login"
-                        className="px-4 py-2 text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                        className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
                     >
                         Sign in
                     </a>
                     <a
                         href="/register"
-                        className="px-4 py-2 text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
+                        className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
                     >
                         Sign up
                     </a>
