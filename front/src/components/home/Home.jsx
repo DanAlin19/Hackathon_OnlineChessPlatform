@@ -10,19 +10,19 @@ extend({ MeshBasicMaterial });
 
 function Model(props) {
     const modelRef = useRef();
-    const { scene } = useGLTF("/network.glb");
+    const { scene } = useGLTF("/chess.glb");
     // let customcol = 0x4800FF;
     // if (localStorage.getItem("theme") === "dark")
     //     customcol = 0x00AFFF;
-    const [color, setColor] = useState(0x006FFF);
-    const newMaterial = new THREE.MeshStandardMaterial({ color: color });
-    useEffect(() => {
-        scene.traverse((node) => {
-            if (node instanceof THREE.Mesh) {
-                node.material = newMaterial;
-            }
-        });
-    }, [color]);
+    // const [color, setColor] = useState(0x006FFF);
+    // const newMaterial = new THREE.MeshStandardMaterial({ color: color });
+    // useEffect(() => {
+    //     scene.traverse((node) => {
+    //         if (node instanceof THREE.Mesh) {
+    //             node.material = newMaterial;
+    //         }
+    //     });
+    // }, [color]);
 
       return (
         <group ref={modelRef}>
@@ -68,7 +68,7 @@ export default function Home() {
                 </div>
                 <div className="">
                     <div className="w-full h-80">
-                        <Canvas dpr={[1, 2]} style={{ position: 'relative', touchAction: 'none' }} camera={{ fov: 35, zoom: 1.5 }}>
+                        <Canvas dpr={[1, 2]} style={{ position: 'relative', touchAction: 'none' }} camera={{ fov: 35, zoom: .8 }}>
                             <PresentationControls speed={1.5} global zoom={1} polar={[-0.1, Math.PI / 4]}>
                                 <Stage environment={null}>
                                     <Model></Model>
