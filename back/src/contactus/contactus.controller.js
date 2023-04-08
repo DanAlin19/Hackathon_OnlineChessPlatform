@@ -18,6 +18,10 @@ async function sendContactUs(req, res, next) {
     try {
         const { fullname, email, message, rating} = req.body;
 
+        if (!fullname || !email || !message) {
+            return res.status(400).send('Please fill out all required fields');
+        }
+
         const newContact = new ContactUS({ fullname, email, message, rating })
         await newContact.save();
 
