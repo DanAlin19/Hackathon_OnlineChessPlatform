@@ -6,31 +6,33 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        try {
-            const response = await fetch('http://localhost:5000/api/v1/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            if (response.ok) {
-                // Successful login, redirect to dashboard or homepage
-                window.location.href = '/';
-            } else {
-                // Login failed, display error message
-                const errorData = await response.json();
-                setErrorMessage(errorData.message);
-            }
-        } catch (error) {
-            console.error('Login failed:', error);
-            setErrorMessage('An error occurred while logging in. Please try again later.');
+    async function LoginUser(event) {
+        event.preventDefault()
+        const response = await fetch('http://localhost:5000/api/v1/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        })
+    
+        const data = await response.json()
+    
+        console.log(data);
+          
+        if(data.token) { 
+          localStorage.setItem("token", JSON.stringify(data.token));
+          setErrorMessage("");
+          window.location.pathname = '/';
+        } else {
+          document.getElementById('eroare_div').style.display = 'block';
+          setErrorMessage(data.message);
         }
-    };
+    
+      }
 
     return (
         <div className='h-screen w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 duration-100 '>
@@ -45,7 +47,7 @@ export default function Login() {
                     <h1 className="text-3xl font-semibold text-center text-sky-700 uppercase dark:text-white">
                         Sign in
                     </h1>
-                    <form className="mt-6" onSubmit={handleSubmit}>
+                    <form className="mt-6" onSubmit={LoginUser}>
                         <div className="mb-2">
                             <label
                                 className="block text-sm font-semibold text-gray-800 dark:text-white"

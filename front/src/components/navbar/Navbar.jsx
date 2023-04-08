@@ -4,8 +4,15 @@ import DarkTheme from "../dark_theme/DarkTheme";
 export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
 
+    var TokenUser = localStorage.getItem("token");
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    };
+
     return (
-        <nav className="w-full bg-gradient-to-r from-orange-200 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-100 shadow z-50 bg-opacity-60">
+        <nav className="w-full bg-gradient-to-r from-orange-200 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-100 shadow z-50">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl lg:items-center lg:flex lg:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 lg:py-5 lg:block">
@@ -72,39 +79,70 @@ export default function NavBar() {
                                 <DarkTheme />
                             </li> : null}
                         </ul>
+                        {!TokenUser ?
 
-                        <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
-                            <a
-                                href="/login"
-                                className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
-                            >
-                                Sign in
-                            </a>
-                            <a
-                                href="/register"
-                                className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
-                            >
-                                Sign up
-                            </a>
-                        </div>
+                            <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
+                                <a
+                                    href="/login"
+                                    className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                                >
+                                    Sign in
+                                </a>
+                                <a
+                                    href="/register"
+                                    className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
+                                >
+                                    Sign up
+                                </a>
+                            </div>
+
+                            :
+
+                            <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
+                                <button
+                                    onClick={handleLogout}
+                                    className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                                >
+                                    LOGOUT
+                                </button>
+                            </div>
+
+                        }
+
                     </div>
                 </div>
-                <div className="hidden space-x-2 lg:inline-block">
-                    <a
-                        href="/login"
-                        className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
-                    >
-                        Sign in
-                    </a>
-                    <a
-                        href="/register"
-                        className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
-                    >
-                        Sign up
-                    </a>
-                </div>
+                {!TokenUser ?
+
+                    <div className="hidden space-x-2 lg:inline-block">
+                        <a
+                            href="/login"
+                            className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
+                        >
+                            Sign in
+                        </a>
+                        <a
+                            href="/register"
+                            className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
+                        >
+                            Sign up
+                        </a>
+                    </div>
+
+                    :
+
+                    <div className="hidden space-x-2 lg:inline-block">
+                        <button
+                            onClick={handleLogout}
+                            className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
+                        >
+                            LOGOUT
+                        </button>
+                    </div>
+
+                }
+
                 <div className="hidden lg:flex">
-                    <DarkTheme/>
+                    <DarkTheme />
                 </div>
             </div>
         </nav>
