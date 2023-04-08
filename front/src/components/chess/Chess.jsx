@@ -6,6 +6,7 @@ export default function PlayRandomMoveEngine() {
     const [game, setGame] = useState(new Chess());
     const [moves, setMoves] = useState([]);
     const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
+    const [status, setStatus] = useState("");
 
     function makeAMove(move) {
         const gameCopy = new Chess(game.fen());
@@ -18,6 +19,7 @@ export default function PlayRandomMoveEngine() {
     function makeRandomMove() {
         const possibleMoves = game.moves();
         if (game.isGameOver() || game.isDraw() || possibleMoves.length === 0) {
+            setStatus(game.isCheckmate() ? "Checkmate! You win!" : "Draw!");
             alert(game.isCheckmate() ? "Checkmate! You win!" : "Draw!");
             return;
         }
@@ -28,6 +30,7 @@ export default function PlayRandomMoveEngine() {
         setGame(gameCopy);
         //setMoves((moves) => [...moves, gameCopy.fen()]);
         if (gameCopy.isGameOver() || gameCopy.isDraw()) {
+            setStatus(gameCopy.isCheckmate() ? "Checkmate! You lose!" : "Draw!");
             alert(gameCopy.isCheckmate() ? "Checkmate! You lose!" : "Draw!");
         }
     }
@@ -72,21 +75,22 @@ export default function PlayRandomMoveEngine() {
             )}
             {game.isGameOver() && (
                 <div>
-                    <h2>Game Over!</h2>
-                    <p>{game.isCheckmate() ? "Checkmate!" : "Draw!"}</p>
-                    <h3>Moves:</h3>
-                    <div>
-                        <button disabled={currentMoveIndex === 0} onClick={handlePrevMove}>
+                    <p className="md:text-xl text-gray-900 font-bold text-center dark:text-white">{status}</p>
+                    <h3 className="md:text-xl text-gray-900 font-bold text-center dark:text-white">Moves:</h3>
+                    <div className="flex justify-center font-bold align-middle">
+                        <button disabled={currentMoveIndex === 0} onClick={handlePrevMove} 
+                            className="px-4 py-2 mx-4 text-black bg-orange-100 rounded-lg shadow hover:bg-white font-bold">
                             Prev
                         </button>
                         <button
                             disabled={currentMoveIndex === moves.length - 1}
                             onClick={handleNextMove}
+                            className="px-4 py-2 mx-4 text-black bg-orange-100 rounded-lg shadow hover:bg-white font-bold"
                         >
                             Next
                         </button>
                     </div>
-                    <h3>Move {currentMoveIndex + 1}</h3>
+                    <h3 className="md:text-xl text-gray-900 font-bold text-center dark:text-white">Move {currentMoveIndex + 1}</h3>
                     <Chessboard position={moves[currentMoveIndex]} />
                 </div>
             )}
