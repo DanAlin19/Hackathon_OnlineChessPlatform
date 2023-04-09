@@ -9,6 +9,7 @@ export default function PlayRandomMoveEngine() {
     const [status, setStatus] = useState("");
 
     function makeAMove(move) {
+        console.log(move);
         const gameCopy = new Chess(game.fen());
         const result = gameCopy.move(move);
         setGame(gameCopy);
