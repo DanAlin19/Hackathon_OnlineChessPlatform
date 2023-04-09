@@ -33,10 +33,10 @@ export default function Home() {
 
                 <div className="md:flex md:flex-col md:justify-center">
                     <h2 className="text-black text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-center dark:text-white">
-                        Whoa Responsive!
+                        Dresorii de biti va invita la un sah!
                     </h2>
 
-                    <p className="md:text-lg text-gray-900 text-center dark:text-white">Responsive can be done using Tailwind!</p>
+                    <p className="md:text-lg text-gray-900 text-center dark:text-white">Joaca acum sah puternic dezvoltat!</p>
                 </div> 
 
                 :
@@ -48,9 +48,9 @@ export default function Home() {
                         </a>
                     </div>
                     <div style={{ marginTop: '1cm' }}>
-                        <button className="w-1/2 px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100" style={{ fontSize: '1.2em', padding: '10px 40px' }}>
+                        <a href='/online-chess' className="inline-block w-1/2 px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100" style={{ fontSize: '1.2em', padding: '10px 40px' }}>
                         Play a Friend
-                        </button>
+                        </a>
                     </div>
                     <div style={{ marginTop: '1cm' }}>
                         <button className="w-1/2 px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100" style={{ fontSize: '1.2em', padding: '10px 40px' }}>

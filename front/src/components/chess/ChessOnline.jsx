@@ -18,11 +18,14 @@ function OnlineChess() {
     const [result, setResult] = useState(null);
     const [gameIdInput, setGameIdInput] = useState("");
     const [droppedPiece, setDroppedPiece] = useState(null);
+    const [gameStarted, setGameStarted] = useState(false);
+    const [currentPlayer, setCurrentPlayer] = useState("w");
 
     useEffect(() => {
         socket.on("gameCreated", (gameId) => {
             setGameId(gameId);
             setPlayer("w");
+            setColor("w")
         });
 
         socket.on("gameJoined", ({ gameId, color }) => {
@@ -38,11 +41,13 @@ function OnlineChess() {
         socket.on("startGame", ({ fen }) => {
             setFen(fen);
             console.log("Game started");
+            setGameStarted(true);
         });
 
         socket.on("moveMade", ({ move, player, fen }) => {
             setFen(fen);
             setDroppedPiece(null);
+            setCurrentPlayer(player === "w" ? "b" : "w");
         });
 
         socket.on("gameOver", ({ result, fen }) => {
@@ -72,7 +77,7 @@ function OnlineChess() {
     };
 
     const handlePieceDrop = (fromSquare, toSquare, piece) => {
-        if (gameOver) {
+        if (!gameStarted || gameOver) {
             return;
         }
 
@@ -100,6 +105,7 @@ function OnlineChess() {
                     <div className="flex justify-center">
                         <h1 className="font-semibold text-lg dark:text-white text-black pr-96">Game ID: {gameId}</h1>
                         <h2 className="font-semibold text-lg dark:text-white text-black">You play with {player === "w" ? "White" : "Black"}</h2>
+                        <h2 className="font-semibold text-lg dark:text-white text-black">{currentPlayer === "w" ? "White turn" : "Black turn"}</h2>
                     </div>
                     {gameOver ? (
                         <div className={`fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center`}>
@@ -114,6 +120,7 @@ function OnlineChess() {
                         <Chessboard
                             position={fen}
                             onPieceDrop={handlePieceDrop}
+                            boardOrientation={player === "w" ? "white" : "black"}
                         />
                     )}
                 </>
