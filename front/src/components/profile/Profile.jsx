@@ -8,8 +8,8 @@ console.log(userId)
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                console.log(`http://localhost:5000/api/v1/${userId}`)
-                const response = await fetch(`http://localhost:5000/api/v1/${userId}`);
+                console.log(`http://localhost:5000/api/v1/user/${userId}`)
+                const response = await fetch(`http://localhost:5000/api/v1/user/${userId}`);
                 const data = await response.json();
                 console.log(data);
                 setUserProfile(data);
