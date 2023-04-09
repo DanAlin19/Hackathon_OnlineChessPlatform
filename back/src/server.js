@@ -1,8 +1,8 @@
 const app = require("./app")
+const express = require('express')
 const https = require("https")
 const http = require("http")
 const fs = require("fs")
-const socketIO = require("socket.io");
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -35,6 +35,11 @@ async function handleChess(io) {
 
   io.on("connection", (socket) => {
     console.log(`Socket ${socket.id} connected`);
+
+    ////////
+    socket.on('message', (data) => {
+      io.emit('message', data);
+    });
 
     socket.on("createGame", (player) => {
       const gameId = Math.random().toString(36).substring(2, 8);
@@ -106,6 +111,10 @@ async function handleChess(io) {
 }
 
 handleChess(io);
+
+//////
+app.use(express.static(__dirname + '/public'));
+
 function requireHTTPS(req, res, next) {
   if (!req.secure) {
     return res.redirect("https://" + req.get("host") + req.url);
