@@ -5,7 +5,7 @@ const errors = require("../common/errors/errors")
 async function getUsers(_, res, next) {
     try {
         const users = await User.find();
-
+        console.log(users)
         res.send(users);
     } catch (e) {
         next(e);
@@ -16,7 +16,6 @@ async function getUserById(req, res, next) {
     try {
         const { id } = req.params;
         const foundUser = await User.findById(id);
-
         res.send(foundUser);
     } catch (e) {
         next(e);
