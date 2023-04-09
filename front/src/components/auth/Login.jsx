@@ -24,7 +24,9 @@ export default function Login() {
         console.log(data);
           
         if(data.token) { 
+            console.log(data)
           localStorage.setItem("token", JSON.stringify(data.token));
+          localStorage.setItem("id", data.id);
           setErrorMessage("");
           window.location.pathname = '/';
         } else {
@@ -35,62 +37,56 @@ export default function Login() {
       }
 
     return (
-        <div className='h-screen w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-600 duration-100 '>
+        <div className='w-full bg-gradient-to-r from-orange-100 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-100 shadow z-50'>
             <div className="relative flex flex-col justify-center min-h-screen overflow-hidden z-0 max-[1024px]:px-28 max-[600px]:px-6">
-                <div className="">
-                    <div className='absolute z-0 top-48 left-28 w-60 h-60 opacity-50 bg-blue-500 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob'></div>
-                    <div className='absolute z-0 top-0 right-28 w-60 h-60 opacity-50 bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-2000'></div>
-                    <div className='absolute z-0 -bottom-24 left-24 w-60 h-60 opacity-50 bg-blue-700 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000' ></div>
-                    <div className='absolute z-0 bottom-48 right-48 w-60 h-60 opacity-50 bg-blue-800 rounded-full mix-blend-multiply dark:mix-blend-hard-light filter blur-2xl animate-blob animation-delay-4000' ></div>
-                </div>
-                <div className="w-full p-6 m-auto bg-white dark:bg-slate-700 rounded-md shadow-xl shadow-sky-400/30 ring ring-2 ring-sky-600 lg:max-w-xl">
-                    <h1 className="text-3xl font-semibold text-center text-sky-700 uppercase dark:text-white">
+                <div className="w-full p-6 m-auto bg-white dark:bg-white rounded-md shadow-xl lg:max-w-xl">
+                    <h1 className="text-3xl font-semibold text-center text-black uppercase dark:text-black">
                         Sign in
                     </h1>
                     <form className="mt-6" onSubmit={LoginUser}>
                         <div className="mb-2">
                             <label
-                                className="block text-sm font-semibold text-gray-800 dark:text-white"
+                                className="block text-sm font-semibold text-gray-800 dark:text-gray-800"
                             >
                                 Email
                             </label>
                             <input
                                 type="email"
-                                className="block w-full px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                className="block w-full px-4 py-2 mt-2 text-black dark:bg-white dark:text-white bg-white border rounded-md focus:border-orange-200 focus:ring-orange-200 focus:outline-none focus:ring focus:ring-opacity-40"
                                 value={email} onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-2">
                             <label
-                                className="block text-sm font-semibold text-gray-800 dark:text-white"
+                                className="block text-sm font-semibold text-gray-800 dark:text-gray-800"
                             >
                                 Password
                             </label>
                             <input
                                 type="password"
-                                className="block w-full px-4 py-2 mt-2 text-sky-700 dark:bg-slate-700 dark:text-white bg-white border rounded-md focus:border-sky-400 focus:ring-sky-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                className="block w-full px-4 py-2 mt-2 text-black dark:bg-white dark:text-white bg-white border rounded-md focus:border-orange-200 focus:ring-orange-200 focus:outline-none focus:ring focus:ring-opacity-40"
                                 value={password} onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <a
                             href="#"
-                            className="text-xs text-sky-600 dark:text-sky-400 hover:underline"
+                            className="text-xs text-black dark:text-black hover:underline"
                         >
                             Forgot Password?
                         </a>
                         <div className="mt-6">
-                            <button type="submit" className="w-full px-4 py-2 tracking-wide  text-white transition-colors duration-200 transform bg-sky-700 dark:bg-sky-500 rounded-md hover:bg-sky-600 focus:outline-none focus:bg-sky-600">
+                            <button type="submit" className="w-full px-4 py-2 tracking-wide  text-white transition-colors duration-200 transform bg-orange-700 dark:bg-gradient-to-r dark:from-stone-800 dark:to-stone-900 focus:outline-none focus:bg-orange-800">
                                 Login
                             </button>
                         </div>
                     </form>
 
-                    <p className="mt-8 text-xs font-light text-center text-gray-700 dark:text-white">
+                    <p className="mt-8 text-xs font-light text-center text-gray-700 dark:gray-700">
                         {" "}
                         Don't have an account?{" "}
                         <a
                             href="#"
-                            className="font-medium text-sky-600 dark:text-sky-400 hover:underline"
+                            className="font-medium text-black dark:text-black hover:underline"
                         >
                             Sign up
                         </a>
