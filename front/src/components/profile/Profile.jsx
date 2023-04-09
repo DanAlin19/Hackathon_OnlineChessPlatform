@@ -29,8 +29,8 @@ console.log(userId)
                 <div className='activeStatus h-4 w-4 bg-green-500 absolute top-1 right-1 rounded-full ring-white ring-4'></div>
                 <img src={src} alt="avatar" className="h-24 ring-2 ring-offset-2 rounded-full" />
             </div>
-            <div id="title" className='font-semibold text-xl mt-2'></div>
-            <div id="subtitle" className='text-sm text-gray-500'></div>
+            <div id="title" className='font-semibold text-xl mt-2'>{userProfile ? `${userProfile.firstName} ${userProfile.lastName}` : 'Loading...'}</div>
+            <div id="subtitle" className='text-sm text-gray-500'>{userProfile ? `${userProfile.email}` : 'Loading...'}</div>
 
             <div className="stats flex justify-between items-center my-6 text-sm">
                 <div className='stat-sub flex flex-col items-center font-semibold mr-4'>

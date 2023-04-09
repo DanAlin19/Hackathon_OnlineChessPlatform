@@ -89,7 +89,7 @@ const Contactus = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row pb-10 flex-wrap items-center md:pt-12 justify-center bg-gradient-to-r
+    <div id="contact-us" className="flex flex-col md:flex-row pb-10 flex-wrap items-center md:pt-12 justify-center bg-gradient-to-r
             from-orange-100 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-1000">
       <div className="w-full md:w-2/5 p-8 text-center">
         <h2 className="text-3xl md:text-left font-bold mb-4 dark:text-white">Let's chat</h2>

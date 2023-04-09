@@ -7,20 +7,16 @@ const socket = io("http://localhost:5000"); // replace with your server URL
 
 function OnlineChess() {
     const [gameResult, setGameResult] = useState(null);
-    const [selectedSquare, setSelectedSquare] = useState(null);
-    const [legalMoves, setLegalMoves] = useState([]);
+
     const [gameId, setGameId] = useState(null);
     const [player, setPlayer] = useState(null);
     const [color, setColor] = useState(null);
-    const [moves, setMoves] = useState([]);
-    const [errorMessage, setErrorMessage] = useState(null);
     const [fen, setFen] = useState("start");
     const [gameOver, setGameOver] = useState(false);
-    const [result, setResult] = useState(null);
     const [gameIdInput, setGameIdInput] = useState("");
-    const [droppedPiece, setDroppedPiece] = useState(null);
     const [gameStarted, setGameStarted] = useState(false);
     const [currentPlayer, setCurrentPlayer] = useState("w");
+    const [moves, setAllMoves] = useState([])
 
     useEffect(() => {
         socket.on("gameCreated", (gameId) => {
@@ -47,14 +43,16 @@ function OnlineChess() {
 
         socket.on("moveMade", ({ move, player, fen }) => {
             setFen(fen);
-            setDroppedPiece(null);
             setCurrentPlayer(player === "w" ? "b" : "w");
+            setAllMoves((moves) => [...moves, fen]);
         });
 
         socket.on("gameOver", ({ result, fen }) => {
             setFen(fen);
             setGameResult(result);
             setGameOver(true);
+            console.log(moves)
+            localStorage.setItem("moves", moves);
         });
 
         socket.on("errorMessage", (message) => {
@@ -129,7 +127,7 @@ function OnlineChess() {
             ) : (
 
                 <div className="flex flex-col items-center justify-center h-screen">
-  <h1 class="text-2xl md:text-4xl font-bold mb-10 dark:text-white">Play with Friend!</h1>
+  <h1 className="text-2xl md:text-4xl font-bold mb-10 dark:text-white">Play with Friend!</h1>
   <div className="flex flex-col items-center">
     <input className="w-96 h-12 mb-5 p-2 border-2 border-gray-400 rounded-lg" type="text" placeholder="Enter game ID" value={gameIdInput} onChange={(e) => setGameIdInput(e.target.value)} />
     <div className="flex">

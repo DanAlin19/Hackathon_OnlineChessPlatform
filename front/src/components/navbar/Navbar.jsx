@@ -75,7 +75,7 @@ export default function NavBar() {
                                 <a href="/">About US</a>
                             </li>
                             <li className="hover:text-black dark:text-white text-slate-700">
-                                <a href ="/">Contact US</a>
+                                <a href ="#contact-us">Contact US</a>
                             </li>
                             {navbar ? <li>
                                 <DarkTheme />

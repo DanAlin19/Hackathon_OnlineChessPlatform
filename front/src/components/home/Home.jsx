@@ -26,7 +26,7 @@ var TokenUser = localStorage.getItem("token");
 export default function Home() {
     return (
 
-        <div className='h-screen w-full duration-100 items-center justify-center bg-gradient-to-r from-orange-100 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 '>
+        <div className='h-fit w-full duration-100 items-center justify-center bg-gradient-to-r from-orange-100 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 '>
             <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 px-8 py-8 lg:py-48">
 
                 { !TokenUser ? 
@@ -49,7 +49,7 @@ export default function Home() {
                     </div>
                     <div style={{ marginTop: '1cm' }}>
                         <a href='/online-chess' className="inline-block w-1/2 px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100" style={{ fontSize: '1.2em', padding: '10px 40px' }}>
-                        Play a Friend
+                        Play with a Friend
                         </a>
                     </div>
                     <div style={{ marginTop: '1cm' }}>
