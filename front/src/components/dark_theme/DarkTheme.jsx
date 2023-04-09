@@ -17,7 +17,8 @@ function DarkTheme() {
         },
         {
             icon: "desktop-outline",
-            text: "system"
+            text: "system",
+            className: "icon-red"
         }
     ]
     
@@ -64,9 +65,11 @@ function DarkTheme() {
         <div className=' top-5 right-10 duration-100 bg-transparent rounded z-100'>
             {
                 options?.map(opt => (
-                    <button key={opt.text}
+                    <button
+                        key={opt.text}
                         onClick={() => setTheme(opt.text)}
-                        className={`w-8 h-8 leading-9 text-xl rounded-full m-1 ${theme === opt.text && "text-black"}`}>
+                        className={`w-8 h-8 leading-9 text-xl rounded-full m-1 ${theme === opt.text ? (opt.text === 'dark' ? 'text-white' : '') : ''}`}
+                    >
                         <ion-icon name={opt.icon}></ion-icon>
                     </button>))
             }

@@ -3,7 +3,6 @@ const https = require("https")
 const http = require("http")
 const fs = require("fs")
 const socketIO = require("socket.io");
-// const { Chess } = await import("chess.js");
 const dotenv = require('dotenv')
 dotenv.config()
 

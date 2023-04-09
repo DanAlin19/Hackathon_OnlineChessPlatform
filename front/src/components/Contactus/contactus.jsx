@@ -90,7 +90,7 @@ const Contactus = () => {
 
   return (
     <div className="flex flex-col md:flex-row pb-10 flex-wrap items-center md:pt-12 justify-center bg-gradient-to-r
-            from-blue-100 to-blue-300 dark:bg-gradient-to-r dark:from-slate-600 dark:to-gray-900 duration-1000">
+            from-orange-100 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-1000">
       <div className="w-full md:w-2/5 p-8 text-center">
         <h2 className="text-3xl md:text-left font-bold mb-4 dark:text-white">Let's chat</h2>
         <h2 className="text-3xl md:text-left font-bold mb-4 dark:text-white">Tell us about your experience.</h2>
@@ -158,7 +158,7 @@ const Contactus = () => {
         </div>
         <div className="flex justify-end">
           <button
-            className="bg-gradient-to-r from-blue-300 to-blue-500 dark:bg-gradient-to-r dark:from-slate-600
+            className=" bg-orange-700 dark:bg-gradient-to-r dark:from-slate-600
                 dark:to-gray-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >

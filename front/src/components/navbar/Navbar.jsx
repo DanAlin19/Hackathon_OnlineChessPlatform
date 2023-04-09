@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DarkTheme from "../dark_theme/DarkTheme";
+import Logo from "../../assets/logo2.png"
 
 export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
@@ -8,16 +9,17 @@ export default function NavBar() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('id');
         window.location.reload();
     };
 
     return (
-        <nav className="w-full bg-gradient-to-r from-orange-200 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-100 shadow z-50">
+        <nav className="w-full bg-gradient-to-r from-orange-100 to-orange-300 dark:bg-gradient-to-r dark:from-stone-700 dark:to-stone-800 duration-100 shadow z-50">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl lg:items-center lg:flex lg:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 lg:py-5 lg:block">
                         <a href="/">
-                            <h2 className="text-2xl font-bold text-sky-700 dark:text-white">LOGO</h2>
+                            <img src={Logo} alt="Logo" className="w-30 h-10" />
                         </a>
                         <div className="lg:hidden">
                             <button
@@ -67,13 +69,13 @@ export default function NavBar() {
                                 <a href="/">Home</a>
                             </li>
                             <li className="hover:text-black dark:text-white text-slate-700">
-                                <a href="/">Blog</a>
+                                <a href="/profile">Profile</a>
                             </li>
                             <li className="hover:text-black dark:text-white text-slate-700">
                                 <a href="/">About US</a>
                             </li>
                             <li className="hover:text-black dark:text-white text-slate-700">
-                                <a href="/">Contact US</a>
+                                <a href ="/">Contact US</a>
                             </li>
                             {navbar ? <li>
                                 <DarkTheme />
@@ -84,13 +86,13 @@ export default function NavBar() {
                             <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
                                 <a
                                     href="/login"
-                                    className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                                    className="inline-block w-full px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100"
                                 >
                                     Sign in
                                 </a>
                                 <a
                                     href="/register"
-                                    className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-lg shadow hover:bg-gray-100"
+                                    className="inline-block w-full px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100"
                                 >
                                     Sign up
                                 </a>
@@ -101,9 +103,9 @@ export default function NavBar() {
                             <div className="mt-3 space-y-2 lg:hidden lg:inline-block">
                                 <button
                                     onClick={handleLogout}
-                                    className="inline-block w-full px-4 py-2 text-center text-white bg-sky-700 rounded-lg shadow hover:bg-sky-800"
+                                    className="inline-block w-full px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100"
                                 >
-                                    LOGOUT
+                                    Log out
                                 </button>
                             </div>
 
@@ -116,13 +118,13 @@ export default function NavBar() {
                     <div className="hidden space-x-2 lg:inline-block">
                         <a
                             href="/login"
-                            className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
+                            className="px-4 py-2 text-black bg-orange-100 dark:bg-white rounded-lg shadow hover:bg-white"
                         >
                             Sign in
                         </a>
                         <a
                             href="/register"
-                            className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
+                            className="px-4 py-2 text-black bg-orange-100 dark:bg-white rounded-lg shadow hover:bg-white"
                         >
                             Sign up
                         </a>
@@ -133,9 +135,9 @@ export default function NavBar() {
                     <div className="hidden space-x-2 lg:inline-block">
                         <button
                             onClick={handleLogout}
-                            className="px-4 py-2 text-black bg-orange-100 rounded-lg shadow hover:bg-white"
-                        >
-                            LOGOUT
+                            className="inline-block w-full px-4 py-2 text-center bg-orange-100 dark:bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100"
+                            >
+                            Log out
                         </button>
                     </div>
 
