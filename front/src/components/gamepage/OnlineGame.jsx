@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Chess from "../chess/ChessOnline"
+import Chat from "../chess/Chat"
 
 export default function OnlineGame() {
     
@@ -8,6 +9,9 @@ export default function OnlineGame() {
             <div className="w-1/3">
                 <Chess/>
             </div>
+            {/* <div>
+                <Chat/>
+            </div> */}
         </div>
     );
 }

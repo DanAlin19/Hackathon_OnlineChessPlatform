@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import io from "socket.io-client";
+import Chat from "./Chat"
 
 const socket = io("http://localhost:5000"); // replace with your server URL
 
@@ -103,8 +104,8 @@ function OnlineChess() {
             {gameId ? (
                 <>
                     <div className="flex justify-center">
-                        <h1 className="font-semibold text-lg dark:text-white text-black pr-96">Game ID: {gameId}</h1>
-                        <h2 className="font-semibold text-lg dark:text-white text-black">You play with {player === "w" ? "White" : "Black"}</h2>
+                        <h1 className="font-semibold text-lg dark:text-white text-black pr-8">Game ID: {gameId}</h1>
+                        <h2 className="font-semibold text-lg dark:text-white text-black pr-8">You play with {player === "w" ? "White" : "Black"}</h2>
                         <h2 className="font-semibold text-lg dark:text-white text-black">{currentPlayer === "w" ? "White turn" : "Black turn"}</h2>
                     </div>
                     {gameOver ? (
@@ -116,12 +117,13 @@ function OnlineChess() {
                                 </div>
                             </div>
                         </div>
-                    ) : (
+                    ) : (<div>
                         <Chessboard
                             position={fen}
                             onPieceDrop={handlePieceDrop}
                             boardOrientation={player === "w" ? "white" : "black"}
                         />
+                        <Chat/></div>
                     )}
                 </>
             ) : (
