@@ -34,23 +34,23 @@ console.log(userId)
 
             <div className="stats flex justify-between items-center my-6 text-sm">
                 <div className='stat-sub flex flex-col items-center font-semibold mr-4'>
-                    <div className='stat-num text-indigo-500 font-bold text-md'>172</div>
-                    <div className='stat-type text-indigo-400 text-xs'>POINTS</div>
+                    <div className='stat-num text-stone-500 font-bold text-md'>172</div>
+                    <div className='stat-type text-black text-xs'>POINTS</div>
                 </div>
                 <div className='stat-sub flex flex-col items-center font-semibold mr-4'>
-                    <div className='stat-num text-indigo-500 font-bold text-md'>3.2k</div>
-                    <div className='stat-type text-indigo-400 text-xs'>WINS</div>
+                    <div className='stat-num text-stone-500 font-bold text-md'>3.2k</div>
+                    <div className='stat-type text-black text-xs'>WINS</div>
                 </div>
                 <div className='stat-sub flex flex-col items-center font-semibold'>
-                    <div className='stat-num text-indigo-500 font-bold text-md'>27</div>
-                    <div className='stat-type text-indigo-400 text-xs'>FOLLOWERS</div>
+                    <div className='stat-num text-stone-500 font-bold text-md'>27</div>
+                    <div className='stat-type text-black text-xs'>FOLLOWERS</div>
                 </div>
 
 
             </div>
             <div className="actions mt-4 flex justify-center items-center">
-                <div><button className="follow focus:ring-2 ring-offset-2 mr-4 bg-indigo-500 text-white p-2 px-4 rounded-md">FOLLOW</button></div>
-                <div><button className='msg focus:ring-2 ring-offset-2 ring-pink-300 bg-pink-600 text-white p-2 px-4 rounded-md'>MESSAGE</button></div>
+                <div><button className="follow focus:ring-2 ring-offset-2 mr-4 bg-orange-300 dark:bg-stone-400 text-white p-2 px-4 rounded-md">FOLLOW</button></div>
+                <div><button className='msg focus:ring-2 ring-offset-2 ring-pink-300 bg-orange-300 dark:bg-stone-400 text-white p-2 px-4 rounded-md'>MESSAGE</button></div>
             </div>
         </div>
     </div>

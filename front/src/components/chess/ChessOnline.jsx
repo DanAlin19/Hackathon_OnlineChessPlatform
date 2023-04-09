@@ -120,12 +120,12 @@ function OnlineChess() {
             ) : (
 
                 <div className="flex flex-col items-center justify-center h-screen">
-  <h1 className="text-4xl font-bold mb-10">Play with Friend!</h1>
+  <h1 class="text-2xl md:text-4xl font-bold mb-10 dark:text-white">Play with Friend!</h1>
   <div className="flex flex-col items-center">
     <input className="w-96 h-12 mb-5 p-2 border-2 border-gray-400 rounded-lg" type="text" placeholder="Enter game ID" value={gameIdInput} onChange={(e) => setGameIdInput(e.target.value)} />
     <div className="flex">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mr-5" onClick={() => socket.emit("createGame", "player1")}>Create Game</button>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onClick={handleJoinGame}>Join Game</button>
+      <button className="bg-orange-100 dark:bg-white text-gray-800 font-bold py-2 px-4 rounded-lg mr-5" onClick={() => socket.emit("createGame", "player1")}>Create Game</button>
+      <button className="bg-orange-100 dark:bg-white text-gray-800 font-bold py-2 px-4 rounded-lg" onClick={handleJoinGame}>Join Game</button>
     </div>
   </div>
 </div>
