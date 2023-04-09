@@ -20,7 +20,7 @@
     "@react-three/fiber": "^8.12.0",
     "@react-three/postprocessing": "^2.7.0",
     "chess": "^1.1.0",
-    "chess.js": "^1.0.0-beta.4",
+    "chess.js": "^0.13.4",
     "konva": "^8.4.3",
     "react": "^18.2.0",
     "react-chessboard": "^2.1.2",
