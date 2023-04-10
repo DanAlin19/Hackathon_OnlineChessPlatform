@@ -6,7 +6,7 @@ const sendEmail = async (subject, message_to, send_to, sent_from, reply_to) => {
     port: 465,
     secure: true,
     auth: {
-      user: 'alindan44@gmail.com',
+      user: 'put mail here'
       pass: 'afcetekajevkbuoh',
     },
     tls: {
